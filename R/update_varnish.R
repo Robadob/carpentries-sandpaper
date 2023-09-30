@@ -10,17 +10,19 @@
 #'
 #' @note this requires an internet connection
 update_varnish <- function(version = NULL, ...) {
-  repo <- c("https://carpentries.r-universe.dev/", 
-    "https://carpentries.github.io/drat/"
-  )
-  if (is.null(version)) {
-    utils::install.packages("varnish", repos = repo, ...)
-  } else {
-    varn <- paste0(
-      repo, "src/contrib/varnish_", version, ".tar.gz"
-    )
-    utils::install.packages(varn, repos = repo)
-  }
+  library(devtools)
+  install_github("Robadob/carpentries-varnish")
+  #repo <- c("https://carpentries.r-universe.dev/", 
+  #  "https://carpentries.github.io/drat/"
+  #)
+  #if (is.null(version)) {
+  #  utils::install.packages("varnish", repos = repo, ...)
+  #} else {
+  #  varn <- paste0(
+  #    repo, "src/contrib/varnish_", version, ".tar.gz"
+  #  )
+  #  utils::install.packages(varn, repos = repo)
+  #}
   invisible(NULL)
 }
 #nocov end
